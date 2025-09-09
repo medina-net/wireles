@@ -47,8 +47,38 @@ header .logo-container svg{width:60px;height:60px;}
 footer{background:#0072ff;color:white;text-align:center;padding:30px;margin-top:40px;font-size:.95rem;letter-spacing:1px;}
 
 /* ===== WHATSAPP FLOAT ===== */
-.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;border-radius:50%;width:70px;height:70px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;z-index:1000;box-shadow:0 8px 20px rgba(0,0,0,0.3);transition:.3s;}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;z-index:1000;box-shadow:0 8px 20px rgba(0,0,0,0.3);transition:.3s;}
 .whatsapp:hover{transform:scale(1.15);}
+
+.social-float {
+  position: fixed;
+  bottom: 80px; /* cambia para subir o bajar todo el bloque */
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+.btn-social {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: all .3s ease;
+  text-decoration: none;
+}
+.btn-social:hover {
+  transform: scale(1.1);
+}
+/* Colores de cada red */
+.btn-social.whatsapp {background:#25D366;}
+.btn-social.facebook {background:#1877F2;}
+.btn-social.instagram {background:#E1306C;}
+.btn-social.tiktok {background:#000000;}
+.btn-social.telegram {background:#0088cc;}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
@@ -289,8 +319,47 @@ footer{background:#0072ff;color:white;text-align:center;padding:30px;margin-top:
 <footer>
   © 2025 Medina Net. Todos los derechos reservados.
 </footer>
+<!-- Botones flotantes de redes sociales -->
+<div class="social-float">
+ <!-- WhatsApp -->
+  <a href="https://wa.me/51935128270" target="_blank" class="btn-social whatsapp" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="26" height="26" fill="white">
+      <path d="M128,24A104,104,0,0,0,41.8,185.3L32,224l39-9.8A104,104,0,1,0,128,24Zm0,192a87.8,87.8,0,0,1-44.7-12.1l-3.4-2-23.1,5.8,6-22.4-2.2-3.5A88,88,0,1,1,128,216Zm44.9-65.6c-2.5-1.3-14.7-7.3-17-8.1s-4-.9-5.7,1.4-6.6,8.1-8.1,9.8-3,1.8-5.5.6a71.4,71.4,0,0,1-21-12.9,78.7,78.7,0,0,1-14.6-18c-1.5-2.5-.2-3.8,1.1-5s2.5-3,3.8-4.5,1.7-2.5,2.5-4.2.4-3.2-.2-4.5-5.3-12.8-7.3-17.5-3.9-3.9-5.3-4-3,0-4.6,0a8.8,8.8,0,0,0-6.4,3,26.9,26.9,0,0,0-8.4,20c0,11.8,8.6,23.2,9.8,24.8s17,26.5,41.1,37c5.7,2.5,10.1,4,13.6,5.1a32.3,32.3,0,0,0,14.9.9c4.5-.7,14-5.7,16-11.2s2-10.2,1.4-11.2S175.4,151.7,172.9,150.4Z"></path>
+    </svg>
+  </a>
+  
+  <!-- Facebook -->
+  <a href="https://facebook.com/paul.medina.56232" target="_blank" class="btn-social facebook" aria-label="Facebook">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
+      <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2c0-2 1.2-3 3-3h2v3h-1c-1 0-1 .5-1 1v1h3l-1 3h-2v7A10 10 0 0 0 22 12"/>
+    </svg>
+  </a>
 
-<a href="https://wa.me/51935128270" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <!-- Instagram -->
+  <a href="https://instagram.com/p0l.yt" target="_blank" class="btn-social instagram" aria-label="Instagram">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" fill="white">
+      <path d="M128 80a48 48 0 1 0 48 48 48.1 48.1 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32 32.1 32.1 0 0 1-32 32Zm48-136H80a56 56 0 0 0-56 56v96a56 56 0 0 0 56 56h96a56 56 0 0 0 56-56V80a56 56 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40Zm-28-92a12 12 0 1 1-12-12 12 12 0 0 1 12 12Z"/>
+    </svg>
+  </a>
+
+  <!-- TikTok -->
+  <a href="https://www.tiktok.com/@sintucarino/photo/7111164353084214533?is_from_webapp=1&sender_device=pc&web_id=7547858385296541201" target="_blank" class="btn-social tiktok" aria-label="TikTok">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" fill="white">
+      <path d="M210.3 81.6a83.5 83.5 0 0 1-49-16V140a60 60 0 1 1-40-57.4V66.6A84.1 84.1 0 1 0 226.2 108a83.9 83.9 0 0 1-15.9-26.4Z"/>
+    </svg>
+  </a>
+  
+    <!-- Telegram -->
+  <a href="https://t.me/primoyt" target="_blank" class="btn-social telegram" aria-label="Telegram">
+    <!-- SVG Telegram -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" fill="white">
+      <path d="M228.4 29.3a11.8 11.8 0 0 0-12.3-2.3L28.8 95.2A11.9 11.9 0 0 0 31 117l41.9 17.2L168.3 70a8 8 0 0 1 9.3 13l-92 74 32.5 13.4a8 8 0 0 0 9.3-1.7l39.3-41.5 28.4 11.7a11.9 11.9 0 0 0 16.3-8.6l24-111.7a11.8 11.8 0 0 0-3.7-11.3Z"/>
+    </svg>
+  </a>
+</div>
+</div>
+
+
 
 <script>
 function openTab(evt, tabName){
@@ -307,6 +376,7 @@ document.getElementsByClassName("tablink")[0].click();
 
 </body>
 </html>
+
 
 
 
