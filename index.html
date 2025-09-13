@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Medina Net - Tienda & Servicios</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
+    /* === Estilos base (mantener igual estructura y look) === */
     body {margin:0;font-family:Arial, sans-serif;background:#f5faff;color:#333;}
     header {display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#0072ff,#00c6ff);color:#fff;padding:10px;}
     header h1 {font-size:1.5rem;margin:0;}
@@ -25,13 +25,12 @@
     .menu-float button:hover {background:#0072ff;color:#fff;transform:translateY(-4px);}
     .menu-float button.active {background:#00c6ff;color:#fff;}
 
-    /* Responsive menú */
     @media (max-width:600px){
       .menu-float {display:grid;grid-template-columns: repeat(4, 1fr);gap:10px;padding:0 10px;}
       .menu-float button {width:100%;height:80px;font-size:0.7rem;}
       .menu-float button i {font-size:1rem;}
     }
-    @media (max-width:400px){.menu-float {grid-template-columns: repeat(3, 1fr);}}
+    @media (max-width:400px){.menu-float {grid-template-columns: repeat(3, 1fr);} }
 
     .tab-content {display:none;padding:20px;}
     .tab-content.active {display:block;}
@@ -41,10 +40,10 @@
       color:#fff;transition:transform 0.3s;
     }
     .card:hover {transform:translateY(-5px);}
-    .btn {display:inline-block;margin-top:10px;padding:10px 15px;background:#28a745;color:#fff;border-radius:8px;text-decoration:none;cursor:pointer;}
+    .btn {display:inline-block;margin-top:10px;padding:10px 15px;background:#28a745;color:#fff;border-radius:8px;text-decoration:none;cursor:pointer;border:none;}
     .btn:hover {background:#218838;}
 
-    /* Colores cards */
+    /* card colors */
     .blue-grad {background:linear-gradient(135deg,#00c6ff,#0072ff);}
     .orange-grad {background:linear-gradient(135deg,#ffb347,#ffcc33);}
     .green-grad {background:linear-gradient(135deg,#7bed9f,#2ecc71);}
@@ -54,7 +53,7 @@
     .aqua-grad {background:linear-gradient(135deg,#43cea2,#185a9d);}
     .dark-grad {background:linear-gradient(135deg,#2c3e50,#4ca1af);}
 
-    /* Redes flotantes */
+    /* floating social */
     .fab-menu {position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:100;}
     .fab-menu a {width:45px;height:45px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-size:1.2rem;box-shadow:0 2px 6px rgba(0,0,0,0.3);transition:transform 0.3s;}
     .fab-menu a:hover {transform:scale(1.1);}
@@ -67,29 +66,39 @@
 
     /* Modal Yape */
     .modal {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:1000;padding:10px;}
-    .modal-content {background: linear-gradient(135deg,#28a745,#20c997);color:#fff;padding:20px;border-radius:20px;text-align:center;width:95%;max-width:340px;box-shadow:0 5px 20px rgba(0,0,0,0.4);}
-    .modal-content h3 {margin:10px 0;font-size:1.2rem;}
-    .modal-content img.qr {width:80%;max-width:210px;margin:15px auto;border:5px solid #fff;border-radius:16px;background:#fff;}
-    .btn-whatsapp, .btn-copy, .close-btn {display:block;margin:10px auto;padding:12px 15px;border:none;border-radius:10px;font-weight:bold;text-decoration:none;font-size:1rem;cursor:pointer;width:90%;transition:0.3s;}
+    .modal-content {background: linear-gradient(135deg,#28a745,#20c997);color:#fff;padding:20px;border-radius:20px;text-align:center;width:95%;max-width:360px;box-shadow:0 5px 20px rgba(0,0,0,0.4);}
+    .modal-content h3 {margin:8px 0;font-size:1.1rem;}
+    .modal-content img.qr {width:78%;max-width:260px;margin:12px auto;border:6px solid #fff;border-radius:14px;background:#fff;display:block;}
+    .btn-whatsapp, .btn-copy, .close-btn {display:block;margin:8px auto;padding:10px 14px;border:none;border-radius:10px;font-weight:bold;text-decoration:none;font-size:0.95rem;cursor:pointer;width:90%;transition:0.2s;}
     .btn-whatsapp {background:#25d366;color:#fff;}
-    .btn-whatsapp:hover {background:#1ebd5a;}
     .btn-copy {background:#ff2e91;color:#fff;}
-    .btn-copy:hover {background:#e0277b;}
     .close-btn {background:#ff4444;color:#fff;}
-    .close-btn:hover {background:#cc0000;}
 
-    /* FAQ acordeón */
+    /* FAQ */
     .accordion-item {margin-bottom:10px;border-radius:10px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
     .accordion-header {width:100%;text-align:left;padding:12px;background:#0072ff;color:#fff;border:none;cursor:pointer;font-weight:bold;}
     .accordion-body {display:none;padding:12px;background:#f9f9f9;color:#333;}
     .accordion-item.active .accordion-body {display:block;}
+
+    /* Pagos: calendario */
+    .calendar {margin-top:12px;border-radius:10px;padding:12px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.06);}
+    .calendar-grid {display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;margin-top:8px;}
+    .cal-cell {padding:8px;border-radius:6px;background:#f1f5f9;}
+    .cal-due {background:#ffdd57;font-weight:bold;}
+    .cal-cut {background:#ff6b6b;color:#fff;font-weight:bold;}
+
+    /* small helper */
+    .muted {color:#666;font-size:0.95rem;}
+    .plan-features {margin:10px 0 0 0;padding-left:18px;}
+    .plan-features li {margin-bottom:6px;}
+    @media (max-width:700px){ .grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} .modal-content{max-width:92%} }
   </style>
 </head>
 <body>
 
 <header>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="white"><circle cx="32" cy="32" r="32" fill="white"/><path d="M12 32c11-11 29-11 40 0M18 40c8-8 20-8 28 0M26 48c4-4 8-4 12 0" stroke="#0072ff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-  <h1>MEDINA-Net wireless</h1>
+  <h1>Medina Net wireless</h1>
 </header>
 
 <!-- Menú -->
@@ -101,93 +110,200 @@
   <button onclick="openTab(event,'gaming')"><i class="fa-solid fa-gamepad"></i>Gaming</button>
   <button onclick="openTab(event,'servicios')"><i class="fa-solid fa-screwdriver-wrench"></i>Servicios</button>
   <button onclick="openTab(event,'cobertura')"><i class="fa-solid fa-map-location-dot"></i>Cobertura</button>
+  <button onclick="openTab(event,'pagos')"><i class="fa-solid fa-money-bill-wave"></i>Pagos</button>
   <button onclick="openTab(event,'contacto')"><i class="fa-solid fa-envelope"></i>Contacto</button>
   <button onclick="openTab(event,'faq')"><i class="fa-solid fa-circle-question"></i>FAQ</button>
 </div>
 
-<!-- PLANES -->
+<!-- ===== PLANES (DETALLADOS) ===== -->
 <div id="planes" class="tab-content active">
   <h2>Planes Flexibles</h2>
   <div class="grid">
-    <div class="card blue-grad"><h3>Básico</h3><p>Ideal para redes sociales</p><p><b>S/ 30</b> /mes</p><a onclick="openYape('Plan Básico','30')" class="btn">Pagar con Yape</a></div>
-    <div class="card orange-grad"><h3>Hogar</h3><p>Videollamadas y clases online</p><p><b>S/ 60</b> /mes</p><a onclick="openYape('Plan Hogar','60')" class="btn">Pagar con Yape</a></div>
-    <div class="card green-grad"><h3>Pro</h3><p>Gaming y streaming</p><p><b>S/ 90</b> /mes</p><a onclick="openYape('Plan Pro','90')" class="btn">Pagar con Yape</a></div>
+    <!-- Básico -->
+    <div class="card blue-grad">
+      <h3>Plan Básico</h3>
+      <p><b>Velocidad Asta:</b> 5 Mbps</p>
+      <ul class="plan-features">
+        <li>✔ Recomendado para 1–2 dispositivos</li>
+        <li>✔ Ideal para redes sociales, navegación y correo</li>
+      </ul>
+      <p style="margin-top:10px"><b>S/ 30</b> /mes</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Básico',30)">Pagar con Yape</button>
+        <button class="btn" style="background:#0016d9" onclick="moreInfo('Plan Básico')">Más info</button>
+      </div>
+    </div>
+
+    <!-- Estandar -->
+    <div class="card orange-grad">
+      <h3>Plan Estandar</h3>
+      <p><b>Velocidad Asta:</b> 15 Mbps</p>
+      <ul class="plan-features">
+        <li>✔ Hasta 4–6 dispositivos simultáneos</li>
+        <li>✔ Video llamadas y clases en linea para 2–3 pantallas</li>
+      </ul>
+      <p style="margin-top:10px"><b>S/ 60</b> /mes</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Hogar',60)">Pagar con Yape</button>
+        <button class="btn" style="background:#0016d9" onclick="moreInfo('Plan Hogar')">Más info</button>
+      </div>
+    </div>
+
+    <!-- Pro -->
+    <div class="card green-grad">
+      <h3>Plan Pro</h3>
+      <p><b>Velocidad Asta:</b> 50 Mbps</p>
+      <ul class="plan-features">
+        <li>✔ Recomendado para >8 dispositivos</li>
+        <li>✔ Streaming 4K y gaming online sin cortes</li>
+      </ul>
+      <p style="margin-top:10px"><b>S/ 90</b> /mes</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Pro',90)">Pagar con Yape</button>
+        <button class="btn" style="background:#0016d9" onclick="moreInfo('Plan Pro')">Más info</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- COMPUTADORAS -->
+<!-- ===== COMPUTADORAS ===== -->
 <div id="computadoras" class="tab-content">
   <h2>💻 Computadoras</h2>
   <div class="grid">
     <div class="card purple-grad"><h3>Respaldo y Seguridad</h3><p>Respaldos de datos y protección de información sensible.</p></div>
     <div class="card pink-grad"><h3>Optimización</h3><p>Formateo, instalación de OS, eliminación de virus y configuración de backups.</p></div>
-	<div class="card pink-grad"><h3>Actualización de Componentes</h3><p>RAM, SSD, HDD y optimización de rendimiento.</p></div>
+    <div class="card pink-grad"><h3>Actualización de Componentes</h3><p>RAM, SSD, HDD y optimización de rendimiento.</p></div>
   </div>
 </div>
 
-<!-- DOCTOR CELULAR -->
+<!-- ===== DOCTOR CELULAR ===== -->
 <div id="doctorcelular" class="tab-content">
   <h2>📱 Doctor Celular</h2>
   <div class="grid">
-    <div class="card red-grad"><h3>Reparación</h3><p>Pantallas, baterías, cámaras, puertos de carga.</p></div>
-    <div class="card aqua-grad"><h3>Desbloqueos</h3><p>Google, red, IMEI y más.</p></div>
-	<div class="card aqua-grad"><h3>Servicios adicionales</h3><p>Instalación de ROM, copias de seguridad y recuperación de datos.</p></div>
+    <div class="card red-grad"><h3>Reparación de Pantallas</h3><p>Cambio de pantalla (original / compatible), calibración y testeo.</p><p class="muted">Tiempo aprox. 1-2 horas</p></div>
+    <div class="card aqua-grad"><h3>Baterías y Puertos</h3><p>Reemplazo de baterías, diagnóstico y reparación de puertos de carga.</p><p class="muted">Repuestos con garantía</p></div>
+    <div class="card purple-grad"><h3>Desbloqueos</h3><p>Eliminación de cuenta Google, desbloqueos de red, IMEI (según ley).</p><p class="muted">Evaluamos cada caso</p></div>
+    <div class="card pink-grad"><h3>Copias de Seguridad</h3><p>Respaldo de fotos, contactos y recuperación de datos.</p><p class="muted">Soporte para iOS y Android</p></div>
   </div>
 </div>
 
-<!-- ACCESORIOS -->
+<!-- ===== ACCESORIOS ===== -->
 <div id="accesorios" class="tab-content">
   <h2>🎧 Accesorios</h2>
   <div class="grid">
-    <div class="card green-grad"><h3>Auriculares Bluetooth</h3><p>S/ 80</p><a class="btn" onclick="openYape('Auriculares Bluetooth','80')">Comprar con Yape</a></div>
-    <div class="card orange-grad"><h3>Cargadores Originales</h3><p>S/ 60</p><a class="btn" onclick="openYape('Cargador Original','60')">Comprar con Yape</a></div>
-	<div class="card orange-grad"><h3>Cables USB / Type-C</h3><p>S/ 25</p><a class="btn" onclick="openYape('Cargador Original','60')">Comprar con Yape</a></div>
-	<div class="card orange-grad"><h3>Protectores de Pantalla</h3><p>S/ 10</p><a class="btn" onclick="openYape('Cargador Original','60')">Comprar con Yape</a></div>
-	<div class="card green-grad"><h3>Rauter</h3><p>S/ 80</p><a class="btn" onclick="openYape('Auriculares Bluetooth','80')">Comprar con Yape</a></div>
-	<div class="card green-grad"><h3>TV BOX</h3><p>S/ 80</p><a class="btn" onclick="openYape('Auriculares Bluetooth','80')">Comprar con Yape</a></div>
-	<div class="card orange-grad"><h3>Fundas</h3><p>S/ 25</p><a class="btn" onclick="openYape('Cargador Original','60')">Comprar con Yape</a></div>
+    <div class="card green-grad"><h3>Auriculares Bluetooth</h3><p>S/ 80</p><button class="btn" style="background:#2bd900" onclick="openYape('Auriculares Bluetooth',80)">Comprar</button></div>
+    <div class="card orange-grad"><h3>Cargadores Originales</h3><p>S/ 60</p><button class="btn" class="btn" style="background:#2bd900" onclick="openYape('Cargador Original',60)">Comprar</button></div>
+    <div class="card orange-grad"><h3>Cables USB / Type-C</h3><p>S/ 25</p><button class="btn" class="btn" style="background:#2bd900" onclick="openYape('Cable USB/Type-C',25)">Comprar</button></div>
+    <div class="card orange-grad"><h3>Protectores de Pantalla</h3><p>S/ 10</p><button class="btn" class="btn" style="background:#2bd900" onclick="openYape('Protector de Pantalla',10)">Comprar</button></div>
+    <div class="card green-grad"><h3>Router</h3><p>S/ 80</p><button class="btn" class="btn" style="background:#2bd900" onclick="openYape('Router',80)">Comprar</button></div>
+	<div class="card orange-grad"><h3>TV BOX Z8PRO</h3><p>S/ 250</p><button class="btn" class="btn" style="background:#2bd900" onclick="openYape('Protector de Pantalla',10)">Comprar</button></div>
   </div>
 </div>
 
-<!-- GAMING -->
+<!-- ===== GAMING (recargas) ===== -->
 <div id="gaming" class="tab-content">
   <h2>🎮 Recargas Gaming</h2>
   <div class="grid">
-    <div class="card purple-grad"><h3>Free Fire</h3><p>Desde S/ 5</p><a class="btn" onclick="openYape('Free Fire','5')">Pagar con Yape</a></div>
-    <div class="card blue-grad"><h3>Fortnite</h3><p>Desde S/ 20</p><a class="btn" onclick="openYape('Fortnite','20')">Pagar con Yape</a></div>
-	<div class="card blue-grad"><h3>COD Mobile (CP)</h3><p>Desde S/ 20</p><a class="btn" onclick="openYape('Fortnite','20')">Pagar con Yape</a></div>
-	<div class="card purple-grad"><h3>Roblox (Robux)</h3><p>Desde S/ 5</p><a class="btn" onclick="openYape('Free Fire','5')">Pagar con Yape</a></div>
+    <div class="card purple-grad">
+      <h3>Free Fire</h3>
+      <p>Diamantes desde S/ 5</p>
+      <button class="btn" style="background:#09fa05;margin-left:6px" onclick="openYape('Recarga Free Fire',5)">Recargar S/5</button>
+      <button class="btn" style="background:#fa05f2;margin-left:6px" onclick="openYape('Recarga Free Fire',20)">S/20</button>
+    </div>
+
+    <div class="card blue-grad">
+      <h3>COD Mobile (CP)</h3>
+      <p>Puntos desde S/ 20</p>
+      <button class="btn" style="background:#09fa05;margin-left:6px" onclick="openYape('Recarga COD Mobile',20)">Recargar S/20</button>
+      <button class="btn" style="background:#fa05f2;margin-left:6px" onclick="openYape('Recarga COD Mobile',50)">S/50</button>
+    </div>
+
+    <div class="card orange-grad">
+      <h3>Fortnite</h3>
+      <p>Pavos desde S/ 20</p>
+      <button class="btn" style="background:#09fa05;margin-left:6px" onclick="openYape('Recarga Fortnite',20)">Recargar S/20</button>
+      <button class="btn" style="background:#fa05f2;margin-left:6px" onclick="openYape('Recarga Fortnite',40)">S/40</button>
+    </div>
+
+    <div class="card green-grad">
+      <h3>Roblox (Robux)</h3>
+      <p>Robux desde S/ 5</p>
+      <button class="btn" style="background:#09fa05;margin-left:6px" onclick="openYape('Recarga Roblox',5)">Recargar S/5</button>
+      <button class="btn" style="background:#fa05f2;margin-left:6px" onclick="openYape('Recarga Roblox',25)">S/25</button>
+    </div>
+
+    <div class="card red-grad">
+      <h3>Steam Wallet</h3>
+      <p>Saldo desde S/ 20</p>
+      <button class="btn" style="background:#09fa05;margin-left:6px" onclick="openYape('Recarga Steam',20)">Recargar S/20</button>
+      <button class="btn" style="background:#fa05f2;margin-left:6px" onclick="openYape('Recarga Steam',100)">S/50</button>
+    </div>
   </div>
 </div>
 
-<!-- SERVICIOS -->
+<!-- ===== SERVICIOS ===== -->
 <div id="servicios" class="tab-content">
   <h2>🛠️ Servicios</h2>
   <div class="grid">
-    <div class="card dark-grad"><h3>Configuración Mikrotik</h3><p>Routers y redes.</p></div>
-    <div class="card red-grad"><h3>Páginas Web</h3><p>Diseño moderno con dominio y hosting.</p></div>
-	<div class="card dark-grad"><h3>Instalación de redes</h3><p>Cableado, antenas y optimización Wi-Fi.</p></div>
+    <div class="card dark-grad"><h3>Configuración Mikrotik</h3><p>Optimización y seguridad en redes Mikrotik.</p></div>
+    <div class="card red-grad"><h3>Páginas Web</h3><p>Diseño, dominio y hosting.</p></div>
+    <div class="card dark-grad"><h3>Instalación de redes</h3><p>Antenas, cableado y optimización Wi-Fi.</p></div>
   </div>
 </div>
 
-<!-- COBERTURA -->
+<!-- ===== COBERTURA ===== -->
 <div id="cobertura" class="tab-content">
   <h2>📡 Cobertura</h2>
   <form onsubmit="event.preventDefault(); document.getElementById('whmsg').click();" style="display:flex;gap:10px;">
     <input type="text" placeholder="Tu dirección" style="flex:1;padding:10px;border-radius:8px;border:1px solid #0072ff;">
-    <a id="whmsg" href="https://wa.me/51935128270?text=Consulta cobertura en mi dirección" target="_blank" class="btn">Consultar</a>
+    <a id="whmsg" href="https://wa.me/51935128270?text=Consulta%20cobertura%20en%20mi%20direcci%C3%B3n" target="_blank" class="btn">Consultar</a>
   </form>
 </div>
 
-<!-- CONTACTO -->
+<!-- ===== PAGOS: guía + calendario + QR automático (se genera en modal) ===== -->
+<div id="pagos" class="tab-content">
+  <h2>💳 Guía de Pago</h2>
+  <p>Estimado cliente, recuerde las siguientes consideraciones acerca de nuestro servicio de Internet:</p>
+  <ul>
+    <li>Ofrecemos el servicio en modalidad <b>suscripción mensual</b> con pagos por adelantado.</li>
+    <li>Puede realizar los pagos mensuales <b>desde el día 15 hasta el día 17</b> (inclusive) de cada mes.</li>
+    <li>El <b>día 18</b> de cada mes se realiza el corte del servicio a aquellos usuarios que no estén al día.</li>
+    <li>Si le resulta conveniente, puede <b>pagar por adelantado varios meses</b>.</li>
+  </ul>
+
+  <div class="calendar" aria-hidden="false">
+    <h4>Calendario de Pagos (referencia)</h4>
+    <div class="calendar-grid" id="calendarGrid">
+      <!-- Se llena dinámicamente al cargar -->
+    </div>
+    <p class="muted" style="margin-top:10px;">Días marcados: <span style="background:#ffc107;padding:4px 8px;border-radius:6px;">15-17</span> | <span style="background:#fa0505;color:#000000;padding:4px 8px;border-radius:6px;">18 (corte)</span></p>
+  </div>
+
+  <h3 style="margin-top:14px;">📲 Generar QR de Pago</h3>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <select id="payProduct" style="padding:8px;border-radius:8px;border:1px solid #ccc;min-width:220px;">
+      <option value="Pago mensual|60">Pago mensual - S/60</option>
+      <option value="Plan Básico|30">Plan Básico - S/30</option>
+      <option value="Plan Hogar|60">Plan Hogar - S/60</option>
+      <option value="Plan Pro|90">Plan Pro - S/90</option>
+      <option value="Otro|0">Otro (ingresa monto)</option>
+    </select>
+    <input id="payAmount" type="number" min="1" placeholder="Monto S/" style="padding:8px;border-radius:8px;border:1px solid #ccc;width:120px;" />
+    <button class="btn" onclick="generatePaymentQR()">Generar QR</button>
+    <button class="btn" style="background:#0069d9" onclick="openYape('Pago Internet',60)">Ejemplo: S/60</button>
+  </div>
+  <p class="muted" style="margin-top:8px;">Al generar el QR aparecerá un modal con el código y un enlace para enviar comprobante por WhatsApp.</p>
+</div>
+
+<!-- ===== CONTACTO ===== -->
 <div id="contacto" class="tab-content">
   <h2>📞 Contacto</h2>
   <p>Escríbenos por WhatsApp o llámanos:</p>
-  <a href="https://wa.me/51935128270" class="btn">WhatsApp</a>
-  <a href="tel:+51935128270" class="btn">Llámanos</a>
+  <a href="https://wa.me/51935128270" class="btn" target="_blank">WhatsApp</a>
+  <a href="tel:+51935128270" class="btn" style="background:#0069d9;margin-left:8px">Llámanos</a>
 </div>
 
-<!-- FAQ -->
+<!-- ===== FAQ ===== -->
 <div id="faq" class="tab-content">
   <h2>❓ Preguntas Frecuentes</h2>
   <div class="accordion">
@@ -202,58 +318,140 @@
   </div>
 </div>
 
-<!-- Modal Yape -->
-<div id="yapeModal" class="modal">
-  <div class="modal-content">
-    <h3>💳 Paga con Yape</h3>
+<!-- ===== Modal Yape (QR generado dinámicamente) ===== -->
+<div id="yapeModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-content" id="yapeModalContent">
+    <h3 id="yapeTitle">💳 Paga con Yape</h3>
     <p id="yapeDesc">Producto</p>
-    <img id="yapeQR" class="qr" src="" alt="QR Yape">
-    <p>Escanea el QR o usa mi número:</p>
-    <h2 style="margin:10px 0;">📲 935 128 270</h2>
-    <a id="whatsappPago" href="#" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Confirmar pago (con captura 📷)</a>
-    <button class="btn-copy" onclick="copiarYape()">📋 Copiar número</button>
+    <img id="yapeQR" class="qr" src="" alt="QR de pago">
+    <p class="muted" style="margin-top:8px">Escanea el QR con Yape o copia el número</p>
+    <h2 style="margin:8px 0;">📲 <span id="yapeNumber">935 128 270</span></h2>
+    <a id="whatsappPago" href="#" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Enviar comprobante (WhatsApp)</a>
+    <button class="btn-copy" onclick="copyYape()">📋 Copiar número</button>
     <button class="close-btn" onclick="closeYape()">Cerrar</button>
   </div>
 </div>
 
 <!-- Redes flotantes -->
 <div class="fab-menu">
-  <a href="https://wa.me/51935128270" target="_blank" class="wa"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://t.me/primoyt" target="_blank" class="tg"><i class="fab fa-telegram"></i></a>
-  <a href="https://www.tiktok.com/@sintucarino/video/7501143312041069830" target="_blank" class="tt"><i class="fab fa-tiktok"></i></a>
+  <a href="https://wa.me/51935128270" target="_blank" class="wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/primoyt" target="_blank" class="tg" title="Telegram"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.tiktok.com/@sintucarino/video/7501143312041069830" target="_blank" class="tt" title="TikTok"><i class="fab fa-tiktok"></i></a>
 </div>
 
 <footer><p>&copy; 2025 Medina Net wireless | Todos los derechos reservados.</p></footer>
 
 <script>
-function openTab(evt, tabName) {
-  var i, tabcontent, tabbuttons;
-  tabcontent=document.getElementsByClassName("tab-content");
-  for(i=0;i<tabcontent.length;i++){tabcontent[i].classList.remove("active");}
-  tabbuttons=document.querySelectorAll(".menu-float button");
-  tabbuttons.forEach(btn=>btn.classList.remove("active"));
-  document.getElementById(tabName).classList.add("active");
-  evt.currentTarget.classList.add("active");
-}
-function openYape(producto,precio){
-  document.getElementById('yapeDesc').innerText = producto+" - S/ "+precio;
-  let numero = "935128270";
-  let data = `Pago ${producto} - S/ ${precio} - Yape ${numero}`;
-  let qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=230x230&data=" + encodeURIComponent(data);
-  document.getElementById('yapeQR').src = qrUrl;
-  let mensaje = `Hola 👋, acabo de pagar con Yape el ${producto} por S/ ${precio}. Te adjunto la captura 📷✅`;
-  document.getElementById("whatsappPago").href ="https://wa.me/51935128270?text=" + encodeURIComponent(mensaje);
-  document.getElementById('yapeModal').style.display="flex";
-}
-function closeYape(){document.getElementById('yapeModal').style.display="none";}
-function copiarYape(){navigator.clipboard.writeText("935128270");alert("Número Yape copiado ✅");}
-document.querySelectorAll(".accordion-header").forEach(btn=>{
-  btn.addEventListener("click",function(){this.parentElement.classList.toggle("active");});
-});
+  /* === Navegación entre pestañas (sin mover estructura original) === */
+  function openTab(evt, tabName) {
+    var i, tabcontent, tabbuttons;
+    tabcontent=document.getElementsByClassName("tab-content");
+    for(i=0;i<tabcontent.length;i++){tabcontent[i].classList.remove("active");}
+    tabbuttons=document.querySelectorAll(".menu-float button");
+    tabbuttons.forEach(btn=>btn.classList.remove("active"));
+    document.getElementById(tabName).classList.add("active");
+    if(evt && evt.currentTarget) evt.currentTarget.classList.add("active");
+    // if opening pagos, render calendar
+    if(tabName==='pagos') renderCalendarForReference();
+  }
+
+  /* === Modal Yape / Generación QR dinámico === */
+  function openYape(producto, precio){
+    // precio may be number or string; ensure numeric display
+    const amount = (typeof precio === 'number' || !isNaN(Number(precio))) ? Number(precio) : precio;
+    const numero = "935128270";
+    const desc = `${producto} - S/ ${amount}`;
+    document.getElementById('yapeTitle').innerText = '💳 Paga con Yape';
+    document.getElementById('yapeDesc').innerText = desc;
+    // Build QR content (you can customize the payload text)
+    const payload = `Medina Net | ${producto} | S/ ${amount} | Yape: ${numero}`;
+    const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(payload);
+    document.getElementById('yapeQR').src = qrUrl;
+    document.getElementById('yapeNumber').innerText = numero.replace(/(\d{3})(\d{3})(\d{3})/,'$1 $2 $3');
+    const waMsg = `Hola, acabo de realizar un pago: ${producto} por S/ ${amount}. Adjunto comprobante.`;
+    document.getElementById('whatsappPago').href = "https://wa.me/51935128270?text=" + encodeURIComponent(waMsg);
+    // show modal
+    const modal = document.getElementById('yapeModal');
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  function closeYape(){
+    const modal = document.getElementById('yapeModal');
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+  }
+  function copyYape(){
+    navigator.clipboard.writeText("935128270");
+    alert("Número Yape copiado ✅ 935128270");
+  }
+
+  /* === Generar QR desde sección Pagos (selector + input) === */
+  function generatePaymentQR(){
+    const sel = document.getElementById('payProduct').value; // format "Label|amount"
+    const amountInput = document.getElementById('payAmount').value;
+    let [label, amount] = sel.split('|');
+    amount = (label === 'Otro' || (!amount || Number(amount) === 0)) ? (amountInput || 0) : amount;
+    if(!amount || Number(amount) <= 0){ alert('Ingresa un monto válido.'); return; }
+    openYape(label, amount);
+  }
+
+  /* === Calendario de referencia dinámico (marca 15-17 y 18) === */
+  function renderCalendarForReference(){
+    const container = document.getElementById('calendarGrid');
+    if(!container) return;
+    container.innerHTML = '';
+    // Simple calendar for current month (we only highlight days 15-18)
+    const days = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    days.forEach(d=>{
+      const cell = document.createElement('div'); cell.className='cal-cell'; cell.innerText = d;
+      container.appendChild(cell);
+    });
+    // Fill first row blanks depending on first day of month
+    const today = new Date();
+    const year = today.getFullYear(), month = today.getMonth();
+    const first = new Date(year, month, 1);
+    const start = first.getDay(); // 0..6
+    for(let i=0;i<start;i++){ const empty = document.createElement('div'); empty.className='cal-cell'; empty.innerText=''; container.appendChild(empty); }
+    const lastDay = new Date(year, month+1, 0).getDate();
+    for(let d=1; d<=lastDay; d++){
+      const cell = document.createElement('div'); cell.className='cal-cell'; cell.innerText = d;
+      if(d >= 15 && d <= 17) cell.classList.add('cal-due');
+      if(d === 18) cell.classList.add('cal-cut');
+      if(d === today.getDate() && month === today.getMonth() && year === today.getFullYear()) cell.style.border = '2px solid #0072ff';
+      container.appendChild(cell);
+    }
+  }
+
+  /* === "Más info" pequeño helper (no mueve nada) === */
+  function moreInfo(plan){
+    let text = '';
+    if(plan==='Plan Básico') text = 'Plan Básico — 5 Mbps. Ideal para 1–2 dispositivos, redes sociales como TIKTOK, Facebook, Whatsapp y navegación. Incluye módem básico.';
+    if(plan==='Plan Hogar') text = 'Plan Hogar — 15 Mbps. Recomendado para familias, streaming HD y teletrabajo. Soporte por WhatsApp incluido.';
+    if(plan==='Plan Pro') text = 'Plan Pro — 50 Mbps. Recomendado para gamers y streaming 4K. Router AC de mayor alcance según zona.';
+    alert(text);
+  }
+
+  /* === FAQ accordion behavior === */
+  document.querySelectorAll(".accordion-header").forEach(btn=>{
+    btn.addEventListener("click", function(){ this.parentElement.classList.toggle("active"); });
+  });
+
+  /* Render initial calendar on load if pagos is visible */
+  document.addEventListener('DOMContentLoaded', function(){
+    renderCalendarForReference();
+  });
+
+  /* Close modal when clicking outside content */
+  window.addEventListener('click', function(e){
+    const modal = document.getElementById('yapeModal');
+    if(modal.style.display === 'flex' && e.target === modal) closeYape();
+  });
 </script>
 
 </body>
 </html>
+
 
 
 
