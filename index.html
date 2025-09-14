@@ -113,6 +113,7 @@
   <button onclick="openTab(event,'pagos')"><i class="fa-solid fa-money-bill-wave"></i>Pagos</button>
   <button onclick="openTab(event,'contacto')"><i class="fa-solid fa-envelope"></i>Contacto</button>
   <button onclick="openTab(event,'faq')"><i class="fa-solid fa-circle-question"></i>FAQ</button>
+  <button onclick="openTab(event,'averias')"><i class="fa-solid fa-triangle-exclamation"></i> Averías</button>
 </div>
 
 <!-- ===== PLANES (DETALLADOS) ===== -->
@@ -124,7 +125,7 @@
       <h3>Plan Básico</h3>
       <p><b>Velocidad Asta:</b> 5 Mbps</p>
       <ul class="plan-features">
-        <li>✔ Recomendado para 1–2 dispositivos</li>
+        <li>✔ Recomendado para 3 dispositivos</li>
         <li>✔ Ideal para redes sociales, navegación y correo</li>
       </ul>
       <p style="margin-top:10px"><b>S/ 30</b> /mes</p>
@@ -254,10 +255,16 @@
 <!-- ===== COBERTURA ===== -->
 <div id="cobertura" class="tab-content">
   <h2>📡 Cobertura</h2>
-  <form onsubmit="event.preventDefault(); document.getElementById('whmsg').click();" style="display:flex;gap:10px;">
-    <input type="text" placeholder="Tu dirección" style="flex:1;padding:10px;border-radius:8px;border:1px solid #0072ff;">
-    <a id="whmsg" href="https://wa.me/51935128270?text=Consulta%20cobertura%20en%20mi%20direcci%C3%B3n" target="_blank" class="btn">Consultar</a>
+  <form id="cobForm" onsubmit="event.preventDefault(); consultarCobertura()"
+        style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+    <input type="text" id="cobDireccion" placeholder="Tu dirección" style="flex:1;padding:10px;border-radius:8px;border:1px solid #0072ff;">
+    <select id="cobTipo" style="padding:10px;border-radius:8px;border:1px solid #0072ff;">
+      <option value="Residencial">Residencial</option>
+      <option value="Comercial">Comercial</option>
+    </select>
+    <button class="btn" onclick="consultarCobertura()" style="background:#0069d9">Consultar</button>
   </form>
+  <p class="muted" style="margin-top:10px;">Al consultar se abrirá WhatsApp con su dirección para confirmar cobertura.</p>
 </div>
 
 <!-- ===== PAGOS: guía + calendario + QR automático (se genera en modal) ===== -->
@@ -318,6 +325,32 @@
   </div>
 </div>
 
+<!-- AVERÍAS -->
+  <section id="averias" class="tab-content" aria-labelledby="averias">
+    <h2>⚠️ Reporte de Averías</h2>
+    <p class="muted">Selecciona un problema o completa el formulario para enviarnos la información por WhatsApp.</p>
+    <div class="grid">
+      <div class="card red-grad"><h3>No hay acceso a Internet</h3><p class="muted">Chequea que el router esté encendido.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=No%20tengo%20acceso%20a%20Internet" target="_blank" rel="noopener">Reportar</a></div></div>
+      <div class="card orange-grad"><h3>Conexión lenta</h3><p class="muted">Revisa descargas e interferencias.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=Mi%20Internet%20est%C3%A1%20lento" target="_blank" rel="noopener">Reportar</a></div></div>
+      <div class="card blue-grad"><h3>Cortes intermitentes</h3><p class="muted">Puede ser interferencia o corte de red.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=Mi%20Internet%20tiene%20cortes%20intermitentes" target="_blank" rel="noopener">Reportar</a></div></div>
+      <div class="card dark-grad"><h3>Otros problemas</h3><p class="muted">Descríbenos y te ayudamos.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=Necesito%20ayuda%20con%20mi%20Internet" target="_blank" rel="noopener">Contactar</a></div></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>📋 Formulario de Reporte</h3>
+      <form id="averiasForm">
+        <label class="muted">Nombre completo</label>
+        <input id="av_nombre" type="text" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-bottom:8px">
+        <label class="muted">N° cliente o DNI</label>
+        <input id="av_cliente" type="text" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-bottom:8px">
+        <label class="muted">Descripción del problema</label>
+        <textarea id="av_problema" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;min-height:100px"></textarea>
+        <button class="btn btn-green" type="submit" style="width:100%;margin-top:8px">📲 Enviar a WhatsApp</button>
+      </form>
+      <p class="muted" style="margin-top:8px">Nota: el formulario abre WhatsApp con el reporte — no se guarda nada en el sitio.</p>
+    </div>
+  </section>
+
 <!-- ===== Modal Yape (QR generado dinámicamente) ===== -->
 <div id="yapeModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="modal-content" id="yapeModalContent">
@@ -355,6 +388,18 @@
     if(tabName==='pagos') renderCalendarForReference();
   }
 
+/* ---------------- Averías form ---------------- */
+document.getElementById('averias') && document.getElementById('averias').querySelector('form')?.addEventListener('submit', function(e){
+  e.preventDefault();
+  const nombre = document.getElementById('av_nombre').value.trim();
+  const cliente = document.getElementById('av_cliente').value.trim();
+  const problema = document.getElementById('av_problema').value.trim();
+  if(!nombre||!cliente||!problema){ alert('Completa todos los campos.'); return; }
+  const msg = `📢 *Nuevo Reporte de Avería*%0A👤 Nombre: ${nombre}%0A🆔 Cliente/DNI: ${cliente}%0A⚠️ Problema: ${problema}`;
+  window.open(`https://wa.me/51935128270?text=${msg}`,'_blank');
+  this.reset();
+});
+
   /* === Modal Yape / Generación QR dinámico === */
   function openYape(producto, precio){
     // precio may be number or string; ensure numeric display
@@ -365,7 +410,7 @@
     document.getElementById('yapeDesc').innerText = desc;
     // Build QR content (you can customize the payload text)
     const payload = `Medina Net | ${producto} | S/ ${amount} | Yape: ${numero}`;
-    const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(payload);
+    const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(payload);
     document.getElementById('yapeQR').src = qrUrl;
     document.getElementById('yapeNumber').innerText = numero.replace(/(\d{3})(\d{3})(\d{3})/,'$1 $2 $3');
     const waMsg = `Hola, acabo de realizar un pago: ${producto} por S/ ${amount}. Adjunto comprobante.`;
@@ -451,6 +496,8 @@
 
 </body>
 </html>
+
+
 
 
 
