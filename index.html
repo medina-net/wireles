@@ -92,13 +92,50 @@
     .plan-features {margin:10px 0 0 0;padding-left:18px;}
     .plan-features li {margin-bottom:6px;}
     @media (max-width:700px){ .grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} .modal-content{max-width:92%} }
+  
+    /* ===========================
+       Estilos específicos agregados
+       =========================== */
+
+    /* cuadro del Formulario de Reporte: verde suave */
+    #formularioReporte {
+      background: linear-gradient(135deg,#e8f5e9,#dff3df);
+      color: #073d20;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border: 2px solid #81c784;
+    }
+    #formularioReporte h3 { color: #0f5b2b; margin-top:0; }
+    #formularioReporte .muted { color:#2b6a3b; }
+    #formularioReporte input, #formularioReporte textarea {
+      background:#fff;color:#033;border:1px solid #cfead0;padding:10px;border-radius:8px;width:100%;
+    }
+    #formularioReporte .btn { background:#43a047; color:#fff; border-radius:8px; }
+    #formularioReporte .btn:hover { background:#2e7d32; }
+
+    /* bloque de cambio de clave: azul y separado */
+    .cambio-clave {
+      margin-top: 18px !important;
+      padding: 14px !important;
+      background: linear-gradient(135deg,#e3f2fd,#bbdefb) !important;
+      color: #05355a !important;
+      border-radius: 10px !important;
+      border: 2px solid #64b5f6 !important;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    }
+    .cambio-clave h3, .cambio-clave h2 { color:#0b4f82 !important; margin:0 0 8px 0; }
+    .cambio-clave input { padding:10px;border-radius:8px;border:1px solid #cfe6fb;background:#fff;color:#033;width:100%; }
+    .cambio-clave .btn, .cambio-clave button { background:#2196f3;color:#fff;border-radius:8px;padding:10px 12px;border:none;cursor:pointer; }
+    .cambio-clave .btn:hover, .cambio-clave button:hover { background:#1976d2; }
+
   </style>
 </head>
 <body>
 
 <header>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="white"><circle cx="32" cy="32" r="32" fill="white"/><path d="M12 32c11-11 29-11 40 0M18 40c8-8 20-8 28 0M26 48c4-4 8-4 12 0" stroke="#0072ff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-  <h1>Medina Net wireless</h1>
+  <h1>MEDINA-NET </h1>
 </header>
 
 <!-- Menú -->
@@ -123,14 +160,14 @@
     <!-- Básico -->
     <div class="card blue-grad">
       <h3>Plan Básico</h3>
-      <p><b>Velocidad Asta:</b> 5 Mbps</p>
+      <p><b>Velocidad de asta:</b>  Mbps</p>
       <ul class="plan-features">
         <li>✔ Recomendado para 3 dispositivos</li>
         <li>✔ Ideal para redes sociales, navegación y correo</li>
       </ul>
       <p style="margin-top:10px"><b>S/ 30</b> /mes</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
-        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Básico',30)">Pagar con Yape</button>
+        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Básico',30)">Solicitar</button>
         <button class="btn" style="background:#0016d9" onclick="moreInfo('Plan Básico')">Más info</button>
       </div>
     </div>
@@ -138,14 +175,14 @@
     <!-- Estandar -->
     <div class="card orange-grad">
       <h3>Plan Estandar</h3>
-      <p><b>Velocidad Asta:</b> 15 Mbps</p>
+      <p><b>Velocidad de asta:</b>  Mbps</p>
       <ul class="plan-features">
         <li>✔ Hasta 4–6 dispositivos simultáneos</li>
         <li>✔ Video llamadas y clases en linea para 2–3 pantallas</li>
       </ul>
       <p style="margin-top:10px"><b>S/ 60</b> /mes</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
-        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Hogar',60)">Pagar con Yape</button>
+        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Hogar',60)">Solicitar</button>
         <button class="btn" style="background:#0016d9" onclick="moreInfo('Plan Hogar')">Más info</button>
       </div>
     </div>
@@ -153,14 +190,14 @@
     <!-- Pro -->
     <div class="card green-grad">
       <h3>Plan Pro</h3>
-      <p><b>Velocidad Asta:</b> 50 Mbps</p>
+      <p><b>Velocidad de asta:</b>  Mbps</p>
       <ul class="plan-features">
         <li>✔ Recomendado para >8 dispositivos</li>
         <li>✔ Streaming 4K y gaming online sin cortes</li>
       </ul>
       <p style="margin-top:10px"><b>S/ 90</b> /mes</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
-        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Pro',90)">Pagar con Yape</button>
+        <button class="btn" style="background:#8600d9;margin-left:6px" onclick="openYape('Plan Pro',90)">Solicitar</button>
         <button class="btn" style="background:#0016d9" onclick="moreInfo('Plan Pro')">Más info</button>
       </div>
     </div>
@@ -183,7 +220,7 @@
   <div class="grid">
     <div class="card red-grad"><h3>Reparación de Pantallas</h3><p>Cambio de pantalla (original / compatible), calibración y testeo.</p><p class="muted">Tiempo aprox. 1-2 horas</p></div>
     <div class="card aqua-grad"><h3>Baterías y Puertos</h3><p>Reemplazo de baterías, diagnóstico y reparación de puertos de carga.</p><p class="muted">Repuestos con garantía</p></div>
-    <div class="card purple-grad"><h3>Desbloqueos</h3><p>Eliminación de cuenta Google, desbloqueos de red, IMEI (según ley).</p><p class="muted">Evaluamos cada caso</p></div>
+    <div class="card purple-grad"><h3>Desbloqueos</h3><p>Eliminación de cuenta Google, desbloqueos de red, (según ley).</p><p class="muted">Evaluamos cada caso</p></div>
     <div class="card pink-grad"><h3>Copias de Seguridad</h3><p>Respaldo de fotos, contactos y recuperación de datos.</p><p class="muted">Soporte para iOS y Android</p></div>
   </div>
 </div>
@@ -330,14 +367,14 @@
     <h2>⚠️ Reporte de Averías</h2>
     <p class="muted">Selecciona un problema o completa el formulario para enviarnos la información por WhatsApp.</p>
     <div class="grid">
-      <div class="card red-grad"><h3>No hay acceso a Internet</h3><p class="muted">Chequea que el router esté encendido.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=No%20tengo%20acceso%20a%20Internet" target="_blank" rel="noopener">Reportar</a></div></div>
+      <div class="card red-grad"><h3>No hay acceso a Internet</h3><p class="muted">Chequea que el router esté encendido Y el POE.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=No%20tengo%20acceso%20a%20Internet" target="_blank" rel="noopener">Reportar</a></div></div>
       <div class="card orange-grad"><h3>Conexión lenta</h3><p class="muted">Revisa descargas e interferencias.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=Mi%20Internet%20est%C3%A1%20lento" target="_blank" rel="noopener">Reportar</a></div></div>
       <div class="card blue-grad"><h3>Cortes intermitentes</h3><p class="muted">Puede ser interferencia o corte de red.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=Mi%20Internet%20tiene%20cortes%20intermitentes" target="_blank" rel="noopener">Reportar</a></div></div>
-      <div class="card dark-grad"><h3>Otros problemas</h3><p class="muted">Descríbenos y te ayudamos.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=Necesito%20ayuda%20con%20mi%20Internet" target="_blank" rel="noopener">Contactar</a></div></div>
+	  <div class="card red-grad"><h3>Otros problemas</h3><p class="muted">Descríbenos y te ayudamos.</p><div style="margin-top:8px"><a class="btn btn-green" href="https://wa.me/51935128270?text=No%20tengo%20acceso%20a%20Internet" target="_blank" rel="noopener">Contactar</a></div></div>
     </div>
 	
 <!-- CAMBIO DE CONTRASEÑA WIFI -->
-    <div class="card" style="background:linear-gradient(135deg,#16a085,#1abc9c);color:#fff;">
+    <div class="card cambio-clave">
       <h3>🔑 Cambio de contraseña WiFi</h3>
       <p>Solicita el cambio de tu clave WiFi de forma rápida y segura.</p>
       <input type="text" id="nuevaClave" placeholder="Escribe tu nueva contraseña WiFi"
@@ -354,7 +391,7 @@
     </div>
   </div>
 
-    <div class="card" style="margin-top:14px">
+    <div class="card" id="formularioReporte" style="margin-top:14px">
       <h3>📋 Formulario de Reporte</h3>
       <form id="averiasForm">
         <label class="muted">Nombre completo</label>
@@ -379,7 +416,7 @@
     <h2 style="margin:8px 0;">📲 <span id="yapeNumber">935 128 270</span></h2>
     <a id="whatsappPago" href="#" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Enviar comprobante (WhatsApp)</a>
     <button class="btn-copy" onclick="copyYape()">📋 Copiar número</button>
-    <button class="close-btn" onclick="closeYape()">Cerrar</button>
+    <button class="close-btn" style="background:#ff0000;margin-left:6px" onclick="closeYape()">Cerrar</button>
   </div>
 </div>
 
@@ -390,7 +427,7 @@
   <a href="https://www.tiktok.com/@sintucarino/video/7501143312041069830" target="_blank" class="tt" title="TikTok"><i class="fab fa-tiktok"></i></a>
 </div>
 
-<footer><p>&copy; 2025 Medina Net wireless | Todos los derechos reservados.</p></footer>
+<footer><p>&copy; 2025 MEDINA-NET | Todos los derechos reservados.</p></footer>
 
 <script>
   /* === Navegación entre pestañas (sin mover estructura original) === */
@@ -543,6 +580,8 @@ let timeoutConfirmacion;
 
 </body>
 </html>
+
+
 
 
 
